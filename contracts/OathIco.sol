@@ -334,7 +334,7 @@ contract DetailedERC20 is ERC20 {
   }
 }
 
-contract QuarkChainToken is DetailedERC20, PausableToken {
+contract OathToken is DetailedERC20, PausableToken {
 
     using SafeMath for uint256;
 
@@ -362,7 +362,7 @@ contract QuarkChainToken is DetailedERC20, PausableToken {
         _;
     }
 
-    constructor() public DetailedERC20("QuarkChain Token", "QKC", 18) {
+    constructor() public DetailedERC20("Oath Token", "OATH", 18) {
         totalSupply_ = INITIAL_SUPPLY;
     }
 
