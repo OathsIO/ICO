@@ -4,18 +4,17 @@ OATH Protocol ICO smart contracts
 
 ## Getting Started
 
-This project is based on [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-solidity) and developed using [Truffle](https://truffleframework.com/)
+This project is developed using [Truffle Suite](https://truffleframework.com/)
 
 ### Local development environment
 
 Initialize the project and test with local development environment
 
 ```
-npm install
+npm install -g
 cd oath-protocol-ico
 truffle compile
-ganache-cli -p 8545
-# Alternatively, launch local test network via "truffle develop"
+ganache-cli -p 8545 # Alternatively, launch local test network via "truffle develop"
 ```
 
 And in another terminal
