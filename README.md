@@ -1,6 +1,6 @@
-# OATH Protocol ICO
+# OATH Protocol
 
-OATH Protocol ICO smart contracts
+OATH Protocol Smart Contracts（Token Contract, Crowd Sale Contracts）
 
 ## Getting Started
 
