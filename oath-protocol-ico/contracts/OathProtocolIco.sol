@@ -406,7 +406,7 @@ contract OathToken is DetailedERC20, PausableToken {
     function burn(uint256 _value) public returns (bool success) {
         require(balances[msg.sender] >= _value);
         balances[msg.sender] -= _value;
-        totalSupply -= _value;
+        totalSupply().sub(_value);
         emit Burn(msg.sender, _value);
         return true;
     }
@@ -416,7 +416,7 @@ contract OathToken is DetailedERC20, PausableToken {
         require(_value <= allowance[_from][msg.sender]);
         balances[_from] -= _value;
         allowance[_from][msg.sender] -= _value;
-        totalSupply -= _value;
+        totalSupply().sub(_value);
         emit Burn(_from, _value);
         return true;
     }
