@@ -88,7 +88,6 @@ contract Pausable is Ownable {
 
 contract ERC20Basic {
   function totalSupply() public view returns (uint256);
-  function balanceOf(address who) public view returns (uint256);
   function transfer(address to, uint256 value) public returns (bool);
   event Transfer(address indexed from, address indexed to, uint256 value);
   event Burn(address indexed from, uint256 value);
@@ -122,16 +121,6 @@ contract BasicToken is ERC20Basic {
     emit Transfer(msg.sender, _to, _value);
     return true;
   }
-
-  /**
-  * @dev Gets the balance of the specified address.
-  * @param _owner The address to query the the balance of.
-  * @return An uint256 representing the amount owned by the passed address.
-  */
-  function balanceOf(address _owner) public view returns (uint256) {
-    return balances[_owner];
-  }
-
 }
 
 contract ERC20 is ERC20Basic {
@@ -415,17 +404,17 @@ contract OathToken is DetailedERC20, PausableToken {
     }
 
     function burn(uint256 _value) public returns (bool success) {
-        require(balanceOf[msg.sender] >= _value);
-        balanceOf[msg.sender] -= _value;
+        require(balances[msg.sender] >= _value);
+        balances[msg.sender] -= _value;
         totalSupply -= _value;
         emit Burn(msg.sender, _value);
         return true;
     }
 
     function burnFrom(address _from, uint256 _value) public returns (bool success) {
-        require(balanceOf[_from] >= _value);
+        require(balances[_from] >= _value);
         require(_value <= allowance[_from][msg.sender]);
-        balanceOf[_from] -= _value;
+        balances[_from] -= _value;
         allowance[_from][msg.sender] -= _value;
         totalSupply -= _value;
         emit Burn(_from, _value);
