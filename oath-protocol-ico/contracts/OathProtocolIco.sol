@@ -88,6 +88,7 @@ contract Pausable is Ownable {
 
 contract ERC20Basic {
   function totalSupply() public view returns (uint256);
+  function balanceOf(address who) public view returns (uint256);
   function transfer(address to, uint256 value) public returns (bool);
   event Transfer(address indexed from, address indexed to, uint256 value);
   event Burn(address indexed from, uint256 value);
@@ -105,6 +106,15 @@ contract BasicToken is ERC20Basic {
   */
   function totalSupply() public view returns (uint256) {
     return totalSupply_;
+  }
+
+  /**
+  * @dev Gets the balance of the specified address.
+  * @param _owner The address to query the the balance of.
+  * @return An uint256 representing the amount owned by the passed address.
+  */
+  function balanceOf(address _owner) public view returns (uint256) {
+    return balances[_owner];
   }
 
   /**
