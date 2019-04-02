@@ -91,6 +91,7 @@ contract ERC20Basic {
   function balanceOf(address who) public view returns (uint256);
   function transfer(address to, uint256 value) public returns (bool);
   event Transfer(address indexed from, address indexed to, uint256 value);
+  event Burn(address indexed from, uint256 value);
 }
 
 contract BasicToken is ERC20Basic {
@@ -417,7 +418,7 @@ contract OathToken is DetailedERC20, PausableToken {
         require(balanceOf[msg.sender] >= _value);
         balanceOf[msg.sender] -= _value;
         totalSupply -= _value;
-        Burn(msg.sender, _value);
+        emit Burn(msg.sender, _value);
         return true;
     }
 
@@ -427,7 +428,7 @@ contract OathToken is DetailedERC20, PausableToken {
         balanceOf[_from] -= _value;
         allowance[_from][msg.sender] -= _value;
         totalSupply -= _value;
-        Burn(_from, _value);
+        emit Burn(_from, _value);
         return true;
     }
 }
