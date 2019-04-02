@@ -362,7 +362,7 @@ contract OathToken is DetailedERC20, PausableToken {
         _;
     }
 
-    constructor() public DetailedERC20("Oath Token", "OATH", 18) {
+    constructor() public DetailedERC20("Oath Protocol", "OATH", 18) {
         totalSupply_ = INITIAL_SUPPLY;
     }
 
